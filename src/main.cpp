@@ -1,9 +1,12 @@
 #include "voidbreach/voidbreach.hpp"
+
 #include <exception>
+#include <iostream>
 
 int main() {
   try {
     voidbreach::Voidbreach vb;
+    vb.run();
   } catch (std::exception& error_) {
     std::cerr << error_.what() << std::endl;
     return 1;
