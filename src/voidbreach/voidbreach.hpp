@@ -2,6 +2,9 @@
 
 #include "../mkit/window.hpp"
 #include "../mkit/input.hpp"
+#include "../mkit/renderer.hpp"
+
+#include <memory>
 
 namespace vb {
 
@@ -15,8 +18,10 @@ private:
   void mainloop();
 
   bool running_{true};
+  
   mkit::window window_;
   mkit::input input_;
+  std::unique_ptr<mkit::renderer> renderer_;
 };
 
 } // namespace vb

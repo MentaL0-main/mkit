@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.hpp"
-
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_keyboard.h>
 
@@ -16,12 +14,10 @@ public:
     return SDL_GetKeyboardState(NULL)[scancode];
   }
 
-  [[nodiscard]] inline point mouse_position() const {
-    float x, y;
+  void mouse_position(float& x, float& y) const {
     SDL_GetMouseState(&x, &y);
-
-      return point{x, y};
-    }
-  };
-
   }
+
+};
+
+}

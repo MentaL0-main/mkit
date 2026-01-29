@@ -25,7 +25,7 @@ public:
 
 private:
   SDL_Window* native_window_{};
-  SDL_Event event_;
+  SDL_Event event_{};
   std::string title_{};
   size2 size_{};
 };

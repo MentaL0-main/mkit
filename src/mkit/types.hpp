@@ -7,14 +7,15 @@ struct vec2 {
 };
 
 struct vec3 {
-  float x, y;
+  float x, y, z;
 };
 
 struct vec4 {
-  float x, y, z;
+  float x, y, z, a;
 };
 
 struct point : public vec2 {};
 struct size2 : public vec2 {};
+struct color : public vec4 {};
 
 } // namespace mkit
