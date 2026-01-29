@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../mkit/window.hpp"
+#include "../mkit/input.hpp"
 
 namespace vb {
 
@@ -15,6 +16,7 @@ private:
 
   bool running_{true};
   mkit::window window_;
+  mkit::input input_;
 };
 
 } // namespace vb

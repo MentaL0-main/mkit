@@ -1,6 +1,8 @@
 #include "voidbreach.hpp"
 
 #include <SDL3/SDL_render.h>
+#include <SDL3/SDL_scancode.h>
+#include <iostream>
 
 namespace vb {
 
@@ -22,7 +24,13 @@ void Voidbreach::mainloop() {
       }
     }
 
-   
+    if (input_.is_key_pressed(SDL_SCANCODE_ESCAPE)) {
+      std::cout << "Hello, World\n";
+    }
+
+    if (input_.mouse_position().x > 100) {
+      std::cout << input_.mouse_position().x << ' ' << input_.mouse_position().y << std::endl;
+    }
 
   }
 }
