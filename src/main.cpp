@@ -5,7 +5,7 @@
 
 int main() {
   try {
-    voidbreach::Voidbreach vb;
+    vb::Voidbreach vb;
     vb.run();
   } catch (std::exception& error_) {
     std::cerr << error_.what() << std::endl;

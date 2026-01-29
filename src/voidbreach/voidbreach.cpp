@@ -1,9 +1,17 @@
 #include "voidbreach.hpp"
 
-namespace voidbreach {
+namespace vb {
 
-void voidbreach::run() {
-  
+Voidbreach::Voidbreach() {
+  window_.init("MKit", 1200, 900);
 }
 
+void Voidbreach::run() {
+  mainloop();
 }
+
+void Voidbreach::mainloop() {
+  window_.events();
+}
+
+} // namespace vb
