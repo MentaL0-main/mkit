@@ -10,7 +10,8 @@ find_package(OpenGL REQUIRED)
 
 file(GLOB_RECURSE ALL_SOURCES 
     "src/main.cpp"
-    "src/*/*.cpp"
+    "src/mkit/*.cpp"
+    "src/voidbreach/*.cpp"
 )
 
 add_executable(mkit ${ALL_SOURCES})

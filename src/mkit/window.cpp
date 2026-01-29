@@ -5,9 +5,10 @@
 #include <SDL3/SDL_init.h>
 #include <SDL3/SDL_video.h>
 #include <stdexcept>
-#include <vector>
 
 namespace mkit {
+
+window::window() {}
 
 window::~window() {
   SDL_DestroyWindow(native_window_);
@@ -28,14 +29,6 @@ void window::init(const std::string& title, int width, int height) {
   native_window_ = SDL_CreateWindow(title_.c_str(), size_.x, size_.y, SDL_WINDOW_RESIZABLE);
   if (!native_window_) {
     throw std::runtime_error(std::string("SDL_CreateWindow(): Failed. ") + SDL_GetError());
-  }
-}
-
-void window::events() {
-  while (SDL_PollEvent(&event_)) {
-    if (event_.type == SDL_EVENT_QUIT) {
-      throw std::runtime_error("Success exiting.");
-    }
   }
 }
 

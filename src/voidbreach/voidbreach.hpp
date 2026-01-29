@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../mkit/mkit.hpp"
+#include "../mkit/window.hpp"
 
 namespace vb {
 

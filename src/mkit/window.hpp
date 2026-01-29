@@ -10,6 +10,8 @@ namespace mkit {
 
 class window {
 public:
+  SDL_Event event;
+
   window();
   ~window();
 
@@ -17,8 +19,6 @@ public:
   void set_title(const std::string& title) { title_ = title; }
   void set_size(size2 size) { size_ = size; }
   
-  void events();
-
   [[nodiscard]] SDL_Window* native_window() const { return native_window_; }
   [[nodiscard]] std::string title() const { return title_; };
   [[nodiscard]] size2 size() const { return size_; };
