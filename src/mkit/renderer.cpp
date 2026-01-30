@@ -11,7 +11,7 @@
 
 namespace mkit {
 
-renderer::renderer(SDL_Window* window) {
+void renderer::init(SDL_Window* window) {
   if (!SDL_WasInit(SDL_INIT_VIDEO)) {
     if (!SDL_Init(SDL_INIT_VIDEO)) {
       throw std::runtime_error("SDL_Init(): Failed. " + std::string(SDL_GetError()));

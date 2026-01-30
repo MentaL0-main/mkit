@@ -4,8 +4,6 @@
 #include "../mkit/input.hpp"
 #include "../mkit/renderer.hpp"
 
-#include <memory>
-
 namespace vb {
 
 class Voidbreach {
@@ -21,7 +19,9 @@ private:
   
   mkit::window window_;
   mkit::input input_;
-  std::unique_ptr<mkit::renderer> renderer_;
+  mkit::renderer renderer_;
+
+  void render_graphics();
 };
 
 } // namespace vb

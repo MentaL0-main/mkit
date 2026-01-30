@@ -5,18 +5,21 @@
 #include "object3D.hpp"
 #include "types.hpp"
 
+#include <GL/glew.h>
 #include <SDL3/SDL.h>
 
 namespace mkit {
 
 class renderer {
 public:
-  renderer(SDL_Window* window);
+  renderer() {}
   ~renderer();
 
+  void init(SDL_Window* window);
+
   [[deprecated]] void triangle();
-  void draw(object2D& object, shader id) {}
-  void draw(object3D& object, shader id) {}
+  void draw(object2D& object, shader sd) {}
+  void draw(object3D& object, shader sd) {}
 
   void clear();
   void clear_color(color clr);
