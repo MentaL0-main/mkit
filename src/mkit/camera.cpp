@@ -18,10 +18,11 @@ void camera::init(glm::vec3 position, float fov, float max_view_distance,
 
 }
 
-void camera::push(shader sd) {
+void camera::push(shader& sd) {
   view_ = glm::lookAt(position_, position_ + forward_, up_);
   projection_ = glm::perspective(fov_, aspect_, min_view_distance_, max_view_distance_);
 
+  sd.use();
   sd.set("model", model_);
   sd.set("view", view_);
   sd.set("projection", projection_);

@@ -90,6 +90,18 @@ void shader::set(const std::string& name, glm::mat4 data) {
   glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(data));
 }
 
+void shader::set(const std::string& name, glm::vec3 data) {
+  GLint location = glGetUniformLocation(id_, name.c_str());
+        
+  if (location == -1) {
+    std::cerr << "Uniform '" << name << "' not found in program!" << std::endl;
+    return;
+  }
+        
+  glUseProgram(id_);
+  glUniform3fv(location, 1, glm::value_ptr(data));
+}
+
 void shader::set(const std::string& name, float data) {
   GLint location = glGetUniformLocation(id_, name.c_str());
 

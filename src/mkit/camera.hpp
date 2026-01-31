@@ -29,7 +29,7 @@ public:
     max_view_distance_ = max;
   }
 
-  void push(shader sd);
+  void push(shader& sd);
 
   [[nodiscard]] inline float aspect() const {
     return aspect_;

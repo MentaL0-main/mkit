@@ -25,7 +25,7 @@ private:
   mkit::window window_{};
   mkit::input input_{};
   mkit::renderer renderer_{};
-  mkit::shader shader_{};
+  mkit::shader skybox_shader_{}, shader_{};
   mkit::camera camera_{};
   mkit::controller controller_{};
   mkit::mesh skybox{};
