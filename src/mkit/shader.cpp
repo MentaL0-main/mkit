@@ -1,5 +1,3 @@
-#pragma once
-
 #include "shader.hpp"
 
 #include <glm/ext/matrix_float4x4.hpp>

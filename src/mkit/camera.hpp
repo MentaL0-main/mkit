@@ -1,12 +1,14 @@
 #pragma once
 
 #include "shader.hpp"
+
 #include <glm/common.hpp>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/vector_float3.hpp>
 #include <glm/vec3.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <GL/glew.h>
+#include <ctime>
 
 namespace mkit {
 
@@ -28,7 +30,7 @@ public:
     max_view_distance_ = max;
   }
 
-  void push(shader id);
+  void push(shader sd);
 
   [[nodiscard]] inline float aspect() const {
     return aspect_;
@@ -83,6 +85,7 @@ private:
   float min_view_distance_ = 0.0f;
   float max_view_distance_ = 0.0f;
   float aspect_ = 0.0f;
+  float time_{(float)time(NULL)};
 };
 
 } // namespace mkit

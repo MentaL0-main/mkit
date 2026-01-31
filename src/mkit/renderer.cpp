@@ -1,4 +1,5 @@
 #include "renderer.hpp"
+#include "mesh.hpp"
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_error.h>
@@ -58,5 +59,12 @@ void renderer::triangle() {
   glColor3f(0.0f, 0.0f, 1.0f); glVertex2f(0.0f, 0.5f);
   glEnd();
 }
+
+void renderer::draw(mesh& mh, shader& sd) {
+  sd.use();
+  glBindVertexArray(mh.vao());
+  glDrawArrays(GL_TRIANGLES, 0, mh.vertices_count());
+  glBindVertexArray(0);
+} 
 
 } // namespace mkit
