@@ -8,7 +8,6 @@
 #include <glm/vec3.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <GL/glew.h>
-#include <ctime>
 
 namespace mkit {
 
@@ -85,7 +84,6 @@ private:
   float min_view_distance_ = 0.0f;
   float max_view_distance_ = 0.0f;
   float aspect_ = 0.0f;
-  float time_{(float)time(NULL)};
 };
 
 } // namespace mkit

@@ -25,7 +25,6 @@ void camera::push(shader sd) {
   sd.set("model", model_);
   sd.set("view", view_);
   sd.set("projection", projection_);
-  sd.set("time", time_);
 }
 
 } // namespace mkit

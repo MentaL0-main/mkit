@@ -78,7 +78,7 @@ void shader::init(const std::string& vertex_path, const std::string& fragment_pa
   id_ = std::move(shaderProgram);
 }
 
-void shader::set(const std::string& name, glm::mat4& data) {
+void shader::set(const std::string& name, glm::mat4 data) {
   GLint location = glGetUniformLocation(id_, name.c_str());
         
   if (location == -1) {

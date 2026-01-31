@@ -9,6 +9,8 @@
 #include <stdexcept>
 #include <string>
 #include <GL/glew.h>
+#include <glm/common.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace mkit {
 
@@ -34,6 +36,8 @@ void renderer::init(SDL_Window* window) {
   if (err != GLEW_OK) {
     throw std::runtime_error("glewInit(): Failed.");
   }
+
+  glEnable(GL_DEPTH_TEST);
 }
 
 renderer::~renderer() {
@@ -62,6 +66,7 @@ void renderer::triangle() {
 
 void renderer::draw(mesh& mh, shader& sd) {
   sd.use();
+  sd.set("model", mh.model());
   glBindVertexArray(mh.vao());
   glDrawArrays(GL_TRIANGLES, 0, mh.vertices_count());
   glBindVertexArray(0);
