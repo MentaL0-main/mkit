@@ -13,10 +13,9 @@ Voidbreach::Voidbreach() {
   shader_.init("../assets/shaders/vertex.glsl", "../assets/shaders/fragment.glsl");
   camera_.init({0.0f, 1.0f, 2.0f}, glm::radians(45.0f), 500.0f, 0.1f, window_.size().x / window_.size().y);
   skybox.init(vertices_);
-  skybox.set_scale(100.0f);
+  skybox.set_scale(500.0f);
   box.init(vertices_);
-  box.set_scale(1.0f);
-  box.move(glm::vec3(-1.0f, 0.0f, 0.0f));
+  box.set_scale(3.0f);
 }
 
 Voidbreach::~Voidbreach() {}
@@ -33,21 +32,30 @@ void Voidbreach::mainloop() {
       }
     }
 
-    const bool* state = SDL_GetKeyboardState(NULL);
-    controller_.process(camera_, 0.1f, state);
+    float mouse_dx, mouse_dy;
+    SDL_GetRelativeMouseState(&mouse_dx, &mouse_dy);
+    
+    camera_.rotate(mouse_dx * 0.002f, -mouse_dy * 0.002f);
+    
+    box.rotate(glm::vec3(1.0f, 1.0f, 0.0f), 0.1f);
 
+    controller_.process(camera_, 0.1f, SDL_GetKeyboardState(NULL));
     render_graphics();
   }
 }
 
 void Voidbreach::render_graphics() {
-  camera_.push(skybox_shader_);
-  camera_.push(shader_);
-
   renderer_.clear();
-  
-  renderer_.draw(skybox, skybox_shader_);
 
+  skybox_shader_.use();        
+  camera_.push(skybox_shader_);
+
+  glDepthMask(GL_FALSE);
+  renderer_.draw(skybox, skybox_shader_);
+ glDepthMask(GL_TRUE);
+
+  shader_.use();
+  camera_.push(shader_);
   renderer_.draw(box, shader_);
 
   renderer_.swap_buffers(window_.native_window());

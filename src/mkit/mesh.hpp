@@ -18,6 +18,10 @@ public:
     model_ = glm::scale(model_, glm::vec3(scale));
   }
 
+  inline void rotate(glm::vec3 axis, float angle) {
+    model_ = glm::rotate(model_, angle, axis);
+  }
+
   inline void move(glm::vec3 pos_delta) {
     model_ = glm::translate(model_, pos_delta);
   }

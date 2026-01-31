@@ -45,6 +45,7 @@ void shader::init(const std::string& vertex_path, const std::string& fragment_pa
   if (!vSuccess) {
     glGetShaderInfoLog(vertexShader, 1024, NULL, vInfoLog);
     std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << vInfoLog << std::endl;
+    throw std::runtime_error("Failed compiple vertex shader");
   }
 
   GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -57,6 +58,7 @@ void shader::init(const std::string& vertex_path, const std::string& fragment_pa
   if (!fSuccess) {
     glGetShaderInfoLog(fragmentShader, 1024, NULL, fInfoLog);
     std::cerr << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << fInfoLog << std::endl;
+    throw std::runtime_error("Failed to compile fragment shader");
   }
 
   GLuint shaderProgram = glCreateProgram();
@@ -70,6 +72,7 @@ void shader::init(const std::string& vertex_path, const std::string& fragment_pa
   if (!linkSuccess) {
     glGetProgramInfoLog(shaderProgram, 1024, NULL, linkInfoLog);
     std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << linkInfoLog << std::endl;
+    throw std::runtime_error("Failed to link program");
   }
 
   glDeleteShader(vertexShader);

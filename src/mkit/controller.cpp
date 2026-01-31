@@ -14,11 +14,11 @@ void controller::process(camera& cam, float speed, const bool* state) {
     cam.move_backward(speed);
   }
 
-  if (state[SDL_SCANCODE_A]) {
+  if (state[SDL_SCANCODE_D]) {
     cam.move_left(speed);
   }
 
-  else if (state[SDL_SCANCODE_D]) {
+  else if (state[SDL_SCANCODE_A]) {
     cam.move_right(speed);
   }
 

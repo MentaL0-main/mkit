@@ -7,6 +7,11 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
+out vec3 Normal;
+out vec3 WorldPos;
+
 void main() {
-  gl_Position = projection * view * model * vec4(aPosition, 1.0);
+  WorldPos = vec3(model * vec4(aPosition, 1.0));
+  Normal = mat3(transpose(inverse(model))) * aNormal;
+  gl_Position = projection * view * vec4(WorldPos, 1.0);
 }

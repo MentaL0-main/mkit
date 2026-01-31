@@ -1,16 +1,19 @@
 #version 330 core
 
 out vec4 FragColor;
+uniform mat4 view;
 
 void main() {
-  vec3 dir = normalize(vec3(gl_FragCoord.xy/800.0-0.5, 1.0));
+  vec3 dir = normalize((inverse(view) * vec4(0,0,1,0)).xyz);
   
-  float t = dir.y*0.5+0.5;
+  // Градиент: низ темнее, верх светлее
+  float t = dir.y * 0.5 + 0.5;  // 0=темно, 1=светло
   
-  vec3 sky = mix(vec3(1,0.7,0.4), vec3(0.2,0.4,0.9), t);
-  vec3 sunDir = normalize(vec3(0.7,0.4,1.0));
+  vec3 darkSky   = vec3(0.4, 0.6, 1.0);  // Темно-голубой низ
+  vec3 lightSky  = vec3(0.8, 0.9, 1.0);  // Светло-голубой верх
   
-  float sun = smoothstep(0.995,1.0,dot(dir,sunDir))*0.8;
+  vec3 sky = mix(darkSky, lightSky, t);
   
-  FragColor = vec4(sky + sun*vec3(1,1,0.8), 1.0);
+  FragColor = vec4(sky, 1.0);
 }
+

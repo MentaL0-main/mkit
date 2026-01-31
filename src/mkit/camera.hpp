@@ -71,11 +71,13 @@ public:
     position_ += -up_ * speed;
   }
 
+  void rotate(float yaw_delta, float pitch_delta);
+  void update_vectors();
+
 private:
   glm::vec3 position_{};
   glm::mat4 view_{};
   glm::mat4 projection_{};
-  glm::mat4 model_ = glm::mat4(1.0f);
   glm::vec3 forward_{0.0f, 0.0f, -1.0f};
   glm::vec3 left_{-1.0f, 0.0f, 0.0f};
   glm::vec3 up_{0.0f, 1.0f, 0.0f};
@@ -84,6 +86,9 @@ private:
   float min_view_distance_ = 0.0f;
   float max_view_distance_ = 0.0f;
   float aspect_ = 0.0f;
+  float yaw_ = 0.0f;
+  float pitch_ = 0.0f;
+
 };
 
 } // namespace mkit

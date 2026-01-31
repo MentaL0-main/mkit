@@ -5,7 +5,7 @@
 namespace mkit {
 
 void mesh::init(std::vector<float>& vertices) {
-  vertices_count_ = vertices.size() / 3;
+  vertices_count_ = vertices.size() / 6;
 
   glGenVertexArrays(1, &vao_);
   glGenBuffers(1, &vbo_);
@@ -15,8 +15,11 @@ void mesh::init(std::vector<float>& vertices) {
   glBindBuffer(GL_ARRAY_BUFFER, vbo_);
   glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertices.size(), vertices.data(), GL_DYNAMIC_DRAW);
 
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
   glEnableVertexAttribArray(0);
+
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+  glEnableVertexAttribArray(1);
 
   glBindBuffer(GL_ARRAY_BUFFER, 0); 
   glBindVertexArray(0);
