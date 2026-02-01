@@ -1,5 +1,6 @@
 #include "voidbreach.hpp"
 #include <SDL3/SDL_keyboard.h>
+#include <SDL3/SDL_scancode.h>
 #include <SDL3/SDL_video.h>
 #include <glm/trigonometric.hpp>
 
@@ -7,15 +8,26 @@ namespace vb {
 
 Voidbreach::Voidbreach() {
   window_.init("MKit", 1200, 900);
+  
   renderer_.init(window_.native_window());
-  renderer_.clear_color({0.2f, 0.3f, 0.2f, 1.0f});
+  renderer_.clear_color({0.2f, 0.8f, 0.2f, 1.0f});
+  
   skybox_shader_.init("../assets/shaders/vertex.glsl", "../assets/shaders/skybox_fragment.glsl");
   shader_.init("../assets/shaders/vertex.glsl", "../assets/shaders/fragment.glsl");
-  camera_.init({0.0f, 1.0f, 2.0f}, glm::radians(45.0f), 500.0f, 0.1f, window_.size().x / window_.size().y);
+  
+  camera_.init({0.0f, 1.0f, 2.0f}, glm::radians(45.0f), 300.0f, 0.1f, window_.size().x / window_.size().y);
+  
   skybox.init(vertices_);
-  skybox.set_scale(500.0f);
-  box.init(vertices_);
-  box.set_scale(3.0f);
+  skybox.set_scale(100.0f);
+
+  box1.init(vertices_);
+  box1.set_scale(2.0f);
+  box1.set_color(glm::vec3(0.0f, 0.0f, 1.0f));
+  box1.move(glm::vec3(-1.0f, 0.0f, 0.0f));
+
+  box2.init(vertices_);
+  box2.set_scale(1.0f);
+  box2.set_color(glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 Voidbreach::~Voidbreach() {}
@@ -33,13 +45,13 @@ void Voidbreach::mainloop() {
     }
 
     float mouse_dx, mouse_dy;
-    SDL_GetRelativeMouseState(&mouse_dx, &mouse_dy);
-    
+    SDL_GetRelativeMouseState(&mouse_dx, &mouse_dy);    
     camera_.rotate(mouse_dx * 0.002f, -mouse_dy * 0.002f);
-    
-    box.rotate(glm::vec3(1.0f, 1.0f, 0.0f), 0.1f);
 
-    controller_.process(camera_, 0.1f, SDL_GetKeyboardState(NULL));
+    const bool* state = SDL_GetKeyboardState(NULL);
+    controller_.process(camera_, 0.1f, state);
+    if (state[SDL_SCANCODE_ESCAPE]) running_ = false;
+
     render_graphics();
   }
 }
@@ -47,16 +59,16 @@ void Voidbreach::mainloop() {
 void Voidbreach::render_graphics() {
   renderer_.clear();
 
-  skybox_shader_.use();        
+  skybox_shader_.use();
   camera_.push(skybox_shader_);
 
   glDepthMask(GL_FALSE);
-  renderer_.draw(skybox, skybox_shader_);
- glDepthMask(GL_TRUE);
+  renderer_.draw(skybox, skybox_shader_, true);
+  glDepthMask(GL_TRUE);
 
-  shader_.use();
   camera_.push(shader_);
-  renderer_.draw(box, shader_);
+  renderer_.draw(box1, shader_);
+  renderer_.draw(box2, shader_);
 
   renderer_.swap_buffers(window_.native_window());
 }

@@ -18,6 +18,10 @@ public:
     model_ = glm::scale(model_, glm::vec3(scale));
   }
 
+  inline void set_color(glm::vec3 color) {
+    color_ = color;
+  }
+
   inline void rotate(glm::vec3 axis, float angle) {
     model_ = glm::rotate(model_, angle, axis);
   }
@@ -42,10 +46,15 @@ public:
     return model_;
   }
 
+  [[nodiscard]] inline glm::vec3 color() const {
+    return color_;
+  }
+
   ~mesh();
 
 private:
   glm::mat4 model_{glm::mat4(1.0f)};
+  glm::vec3 color_{0.0f, 1.0f, 0.0f};
   unsigned int vertices_count_{};
   GLuint vao_{}, vbo_{};
 };

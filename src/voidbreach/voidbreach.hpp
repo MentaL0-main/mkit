@@ -29,7 +29,7 @@ private:
   mkit::camera camera_{};
   mkit::controller controller_{};
   mkit::mesh skybox{};
-  mkit::mesh box{};
+  mkit::mesh box1{}, box2{};
 
   std::vector<float> vertices_ = {
     -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,

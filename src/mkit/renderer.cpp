@@ -64,8 +64,9 @@ void renderer::triangle() {
   glEnd();
 }
 
-void renderer::draw(mesh& mh, shader& sd) {
+void renderer::draw(mesh& mh, shader& sd, bool is_skybox) {
   sd.use();
+  if (!is_skybox) sd.set("color", mh.color()); 
   sd.set("model", mh.model());
   glBindVertexArray(mh.vao());
   glDrawArrays(GL_TRIANGLES, 0, mh.vertices_count());

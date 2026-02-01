@@ -4,6 +4,7 @@ in vec3 Normal;
 in vec3 WorldPos;
 
 uniform vec3 lightDir = normalize(vec3(2.7, 2.4, 2.0));
+uniform vec3 color;
 
 out vec4 FragColor;
 
@@ -14,8 +15,8 @@ void main() {
   float diff = max(dot(N, L), 0.0) * 0.5;
 
   vec3 ambient = vec3(0.45, 0.4, 0.4) * 1.2;
-  vec3 color = vec3(0.9, 0.55, 0.55) * (ambient + diff * 1.5);
+  vec3 finalColor = color * (ambient + diff * 1.5);
     
-  FragColor = vec4(color, 1.0);
+  FragColor = vec4(finalColor, 1.0);
 }
 
