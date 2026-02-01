@@ -21,7 +21,7 @@ public:
   [[deprecated]] void triangle();
   
   void draw(object2D& object, shader& sd) {}
-  void draw(object3D& object, shader& sd) {}
+  void draw(object3D& object, shader& sd);
   void draw(mesh& mh, shader& sd, bool is_skybox=false);
 
   void clear();

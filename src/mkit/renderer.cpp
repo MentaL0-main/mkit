@@ -1,5 +1,6 @@
 #include "renderer.hpp"
 #include "mesh.hpp"
+#include "object3D.hpp"
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_error.h>
@@ -72,5 +73,14 @@ void renderer::draw(mesh& mh, shader& sd, bool is_skybox) {
   glDrawArrays(GL_TRIANGLES, 0, mh.vertices_count());
   glBindVertexArray(0);
 } 
+
+void renderer::draw(object3D& obj, shader& sd) {
+  sd.use();
+  sd.set("model", obj.model());
+  sd.set("color", obj.color());
+  glBindVertexArray(obj.vao());
+  glDrawArrays(GL_TRIANGLES, 0, obj.vertices_count());
+  glBindVertexArray(0);
+}
 
 } // namespace mkit

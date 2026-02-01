@@ -6,7 +6,6 @@
 #include "../mkit/mesh.hpp"
 #include "../mkit/camera.hpp"
 #include "../mkit/controller.hpp"
-#include "../../assets/mesh/vertices.hpp"
 
 namespace vb {
 
@@ -27,8 +26,10 @@ private:
   mkit::shader skybox_shader_{}, shader_{};
   mkit::camera camera_{};
   mkit::controller controller_{};
-  mkit::mesh skybox{};
-  mkit::mesh box1{}, box2{};
+  mkit::mesh skybox_{};
+  mkit::mesh box_{};
+  mkit::object3D object_{};
+
   void render_graphics();
 };
 
