@@ -32,4 +32,4 @@ private:
   SDL_GLContext gl_context_;
 };
 
-}
+} // namespace mkit
