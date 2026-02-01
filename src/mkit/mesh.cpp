@@ -30,4 +30,4 @@ mesh::~mesh() {
   glDeleteBuffers(1, &vbo_);
 }
 
-}
+} // namespace mkit
