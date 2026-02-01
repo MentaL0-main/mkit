@@ -17,15 +17,15 @@ Voidbreach::Voidbreach() {
   
   camera_.init({0.0f, 1.0f, 2.0f}, glm::radians(45.0f), 300.0f, 0.1f, window_.size().x / window_.size().y);
   
-  skybox.init(vertices_);
+  skybox.init(mkit::cube);
   skybox.set_scale(100.0f);
 
-  box1.init(vertices_);
+  box1.init(mkit::cube);
   box1.set_scale(2.0f);
   box1.set_color(glm::vec3(0.0f, 0.0f, 1.0f));
   box1.move(glm::vec3(-1.0f, 0.0f, 0.0f));
 
-  box2.init(vertices_);
+  box2.init(mkit::cube);
   box2.set_scale(1.0f);
   box2.set_color(glm::vec3(0.0f, 1.0f, 0.0f));
 }
