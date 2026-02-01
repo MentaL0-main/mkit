@@ -25,4 +25,4 @@ private:
   GLuint id_{};
 };
 
-}
+} // namespace mkit
