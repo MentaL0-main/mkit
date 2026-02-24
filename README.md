@@ -1,6 +1,6 @@
 # Custom C++ Game Engine - MKit
 
-[![Gameplay Demo](videos/gameplay.mp4)](videos/gameplay.mp4)
+[![Gameplay Demo](videos/gameplay.gif)](videos/gameplay.gif)
 
 A lightweight, modern C++ game engine built from scratch. Features a modular renderer, shader loader, camera system, window abstraction, and renderable meshes.
 
@@ -27,7 +27,7 @@ make -j$(nproc)
 ```
 
 ## Structure
-```
+```bash
 .
 ├── assets
 │   ├── mesh
@@ -77,5 +77,5 @@ make -j$(nproc)
 **Mouse - Look around**
 
 ## License
+This project use **MIT License** 
 
-**MIT**  
