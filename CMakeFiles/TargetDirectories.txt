@@ -1,3 +1,0 @@
-/home/mewfl/mkit/CMakeFiles/mkit.dir
-/home/mewfl/mkit/CMakeFiles/edit_cache.dir
-/home/mewfl/mkit/CMakeFiles/rebuild_cache.dir
