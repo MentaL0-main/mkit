@@ -12,8 +12,14 @@ A lightweight, modern C++ game engine built from scratch. Features a modular ren
 - Mesh Renderer - Load & render 3D models seamlessly
 
 ## Tech Stack
-C++20 | OpenGL 3.3 | GLM | SDL3 | GLEW | GLSL
-CMake | Git Submodules
+- C++20
+- OpenGL 3.3
+- GLM
+- SDL3
+- GLEW
+- GLSL
+- CMake
+- Git Submodules
 
 ## Quick Start
 
@@ -78,4 +84,5 @@ make -j$(nproc)
 
 ## License
 This project use **MIT License** 
+
 
