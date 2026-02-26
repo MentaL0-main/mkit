@@ -4,6 +4,7 @@
 
 namespace mkit {
 
+// Initing VAO and VBO
 void mesh::init(std::vector<float>& vertices) {
   vertices_count_ = vertices.size() / 6;
 

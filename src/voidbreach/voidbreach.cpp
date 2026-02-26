@@ -49,7 +49,7 @@ void Voidbreach::mainloop() {
 
     float mouse_dx, mouse_dy;
     SDL_GetRelativeMouseState(&mouse_dx, &mouse_dy);    
-    camera_.rotate(mouse_dx * 0.002f, -mouse_dy * 0.002f);
+    camera_.rotate(mouse_dx * sens_, -mouse_dy * sens_);
 
     const bool* state = SDL_GetKeyboardState(NULL);
     controller_.process(camera_, 0.1f, state);

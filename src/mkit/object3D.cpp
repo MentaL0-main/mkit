@@ -55,8 +55,7 @@ bool object3D::loadOBJ(const std::string& path, std::vector<Vertex>& out_vertice
             }
         }
     }
-    printf("temp_vertices=%zu, temp_normals=%zu, final=%zu\n", 
-           temp_vertices.size(), temp_normals.size(), out_vertices.size());
+
     return true;
 }
 

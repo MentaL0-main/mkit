@@ -16,20 +16,28 @@ public:
   void run();
 
 private:
-  void mainloop();
+  float sens_ = 0.002f;
 
-  bool running_{true};
+  bool running_ = true;
   
   mkit::window window_{};
+  
   mkit::input input_{};
+  
   mkit::renderer renderer_{};
+  
   mkit::shader skybox_shader_{}, shader_{};
+  
   mkit::camera camera_{};
+  
   mkit::controller controller_{};
+  
   mkit::mesh skybox_{};
   mkit::mesh box_{};
+  
   mkit::object3D object_{};
 
+  void mainloop();
   void render_graphics();
 };
 
