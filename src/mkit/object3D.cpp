@@ -14,18 +14,21 @@ struct Vertex {
   glm::vec3 normal;
 };
 
+// Parse 'v' data
 glm::vec3 object3D::parseVec3(const std::string& line) {
   glm::vec3 vertex;
   sscanf(line.c_str(), "v %f %f %f", &vertex.x, &vertex.y, &vertex.z);
   return vertex;
 }
 
+// Parse 'vt' data
 glm::vec2 object3D::parseVec2(const std::string& line) {
   glm::vec2 uv;
   sscanf(line.c_str(), "vt %f %f", &uv.x, &uv.y);
   return uv;
 }
 
+// Parse obj file
 bool object3D::loadOBJ(const std::string& path, std::vector<Vertex>& out_vertices) {
     std::vector<glm::vec3> temp_vertices, temp_normals;
     std::vector<glm::vec2> temp_uvs;
@@ -60,6 +63,7 @@ bool object3D::loadOBJ(const std::string& path, std::vector<Vertex>& out_vertice
 }
 
 
+// Gen VAO/VBO
 void object3D::init(const std::string& path) {
   glGenVertexArrays(1, &vao_);
   glGenBuffers(1, &vbo_);
@@ -87,5 +91,4 @@ object3D::~object3D() {
     glDeleteVertexArrays(1, &vao_);
 }
 
-}
-
+} // namespace mkit

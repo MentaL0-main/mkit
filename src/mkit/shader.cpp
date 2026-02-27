@@ -8,6 +8,10 @@
 
 namespace mkit {
 
+// 1. Load shader from file
+// 2. Create vertex/fragment shader
+// 3. Create shader program
+// 4. Link
 void shader::init(const std::string& vertex_path, const std::string& fragment_path) {
   auto readShaderFile = [](const std::string& path) -> std::string {
     std::ifstream file;
@@ -81,6 +85,7 @@ void shader::init(const std::string& vertex_path, const std::string& fragment_pa
   id_ = std::move(shaderProgram);
 }
 
+// Set uniform mat4
 void shader::set(const std::string& name, glm::mat4 data) {
   GLint location = glGetUniformLocation(id_, name.c_str());
         
@@ -93,6 +98,7 @@ void shader::set(const std::string& name, glm::mat4 data) {
   glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(data));
 }
 
+// Set uniform vec3
 void shader::set(const std::string& name, glm::vec3 data) {
   glUseProgram(id_);
   GLint location = glGetUniformLocation(id_, name.c_str());
@@ -105,6 +111,7 @@ void shader::set(const std::string& name, glm::vec3 data) {
   glUniform3fv(location, 1, glm::value_ptr(data));
 }
 
+// Set uniform float
 void shader::set(const std::string& name, float data) {
   GLint location = glGetUniformLocation(id_, name.c_str());
 

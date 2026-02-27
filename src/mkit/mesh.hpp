@@ -59,4 +59,4 @@ private:
   GLuint vao_{}, vbo_{};
 };
 
-}
+} // namespace mkit

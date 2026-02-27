@@ -64,4 +64,4 @@ private:
                        std::vector<Vertex>& vertices);
 };
 
-}
+} // namespace mkit
